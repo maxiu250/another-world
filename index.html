@@ -1274,31 +1274,31 @@ npc基本属性列表：
 ]&lt;savingSystem|</tw-passagedata><tw-passagedata pid="33" name="守护者协会" tags="" position="700,1725" size="100,50">&lt;div class=&#39;centerText&#39;&gt;(size:1)[♢(print:(passage:)&#39;s name)♢]
 曾经有许多生灵在这里开会，如今这里已经被荒废了，格外冷清。
 (link:&#39;离开&#39;)[(set:$Place to $lastPlace)(go-to:$Place)]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="34" name="导入剧情1" tags="" position="200,425" size="100,100">[(replace:?sidebar)[]&lt;br&gt;(text-style:&quot;smear&quot;)+(size:1.5)+(t8n-delay:1s)+(t8n:&quot;blur&quot;)[迷途的旅者，
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="34" name="导入剧情1" tags="" position="200,425" size="100,100">{[(replace:?sidebar)[](css:&#39;height: 80vh;display: flex;justify-content: center;align-items: stretch;flex-wrap: nowrap;align-content: stretch;flex-direction: column;line-height:2em;&#39;)[ [(text-style:&quot;smear&quot;)+(size:1.5)+(t8n-delay:1s)+(t8n:&quot;blur&quot;)[迷途的旅者，
 欢迎来到“另一个世界”。]
-&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
 (text-style:&quot;smear&quot;)+(size:1.5)+(t8n-delay:2s)+(t8n:&quot;blur&quot;)[愿您得到巨龙的祝福，
-找到归家之途。&lt;br&gt;&lt;br&gt;]]&lt;word|\
-(link:&quot;什么?&quot;,(t8n-delay:3s)+(t8n:&quot;blur&quot;)+(css:&quot;width:30%; border:solid 2px; padding:0.5em 1em; border-radius: 25%;&quot;)+(hover-style:(color:$lc+white)+(bg:$c+black)+(text-style:&quot;underline&quot;)))[(hide:?word)(text-indent:24)[ [(t8n:&quot;blur&quot;)[这里空无一物，只有一个奇怪的镜子立在你的眼前，你努力辨认出自己的模样……
-生理性别:(dropdown: bind $PCSex, &quot;女性&quot;,&quot;男性&quot;,&quot;双性&quot;,&quot;无性&quot;)
-认知性别：(dropdown: bind $PCGan, &quot;女性&quot;,&quot;男性&quot;,&quot;无性&quot;)
-肤色:(dropdown: bind $PCSfs, &quot;白皙&quot;,&quot;自然&quot;, &quot;黝黑&quot;)
-瞳色: (dropdown: bind $PCSts, &quot;火红&quot;, &quot;琥珀&quot;, &quot;淡蓝&quot;,&quot;湖青&quot;,&quot;翠绿&quot;,&quot;金黄&quot;,&quot;淡紫&quot;,&quot;乌黑&quot;)
+找到归家路途。]]&lt;word|&lt;br&gt;&lt;br&gt;\
+(link:&quot;什么?&quot;,(t8n-delay:3s)+(t8n:&quot;blur&quot;)+(css:&quot;width:30%; border:solid 2px; padding:0.5em 1em; border-radius: 25%;&quot;)+(hover-style:(color:$lc+white)+(bg:$c+black)+(text-style:&quot;underline&quot;)))[(hide:?word)(text-indent:24)[ [(t8n:&quot;blur&quot;)[这里空无一物，只有一个奇怪的镜子立在你的眼前，你努力辨认出自己的模样……&lt;br&gt;
+生理性别:(dropdown: bind $PCSex, &quot;女性&quot;,&quot;男性&quot;,&quot;双性&quot;,&quot;无性&quot;)&lt;br&gt;
+认知性别：(dropdown: bind $PCGan, &quot;女性&quot;,&quot;男性&quot;,&quot;无性&quot;)&lt;br&gt;
+肤色:(dropdown: bind $PCSfs, &quot;白皙&quot;,&quot;自然&quot;, &quot;黝黑&quot;)&lt;br&gt;
+瞳色: (dropdown: bind $PCSts, &quot;火红&quot;, &quot;琥珀&quot;, &quot;淡蓝&quot;,&quot;湖青&quot;,&quot;翠绿&quot;,&quot;金黄&quot;,&quot;淡紫&quot;,&quot;乌黑&quot;)&lt;br&gt;
 发色: (dropdown: bind $PCShs, &quot;金黄&quot;, &quot;淡黄&quot;, &quot;浅棕&quot;,&quot;深棕&quot;,&quot;漆黑&quot;,&quot;灰白&quot;,&quot;银白&quot;,&quot;深红&quot;,&quot;橘黄&quot;,&quot;浅绿&quot;,&quot;天蓝&quot;,&quot;浅紫&quot;)&lt;br&gt;
-&lt;div class=&quot;FirstMirror2&quot; id=&quot;tuoyuankuang&quot;&gt;\
-(link:&quot;仔细看镜子&quot;)[ [&lt;div class=&quot;mirror&quot; &gt; (display:&quot;角色设定&quot;)&lt;/div&gt;
-(link-rerun:&quot;重新辨认&quot;)[(rerun:?LookLikes)]]]&lt;LookLikes|&lt;/div&gt;]&lt;1|]
-(link:&quot;继续&quot;,(t8n:&quot;blur&quot;)+(css:&quot;width:30%; border:solid 2px; padding:0.5em 1em; border-radius: 25%;&quot;)+(hover-style:(color:$lc+white)+(bg:$c+black)+(text-style:&quot;underline&quot;)))[(replace:?1)[您还记得经常得经常进入的那个美妙梦境吗？
-
+&lt;br&gt;&lt;div class=&quot;FirstMirror2&quot; id=&quot;tuoyuankuang&quot;&gt;\
+(link:&quot;&lt;br&gt;仔细看镜子&quot;)[ [&lt;div class=&quot;mirror&quot; &gt; (display:&quot;角色设定&quot;)&lt;/div&gt;
+(link-rerun:&quot;&lt;br&gt;重新辨认&quot;)[(rerun:?LookLikes)]]]&lt;LookLikes|&lt;/div&gt;]&lt;1|]
+&lt;br&gt;&lt;br&gt;(link:&quot;继续&quot;,(t8n:&quot;blur&quot;)+(css:&quot;width:30%; border:solid 2px; padding:0.5em 1em; border-radius: 25%;&quot;)+(hover-style:(color:$lc+white)+(bg:$c+black)+(text-style:&quot;underline&quot;)))[(replace:?1)[您还记得经常得经常进入的那个美妙梦境吗？
+&lt;br&gt;
 在那里，您置身于(dropdown:bind $firstNpc_where,&quot;流水&quot;,&quot;森林&quot;,&quot;天空&quot;,&quot;黑暗&quot;)之中，与一名(dropdown:bind $firstNpc_Sex,&quot;雄性&quot;,&quot;雌性&quot;,&quot;双性&quot;,&quot;无性&quot;)的异族生物分享着欢愉——
 对方(dropdown:bind $firstNpc_HairColor, &quot;赤红&quot;,&quot;淡黄&quot;,&quot;翠绿&quot;,&quot;湛蓝&quot;,&quot;淡紫&quot;,&quot;乌黑&quot;,&quot;雪白&quot;,&quot;银灰&quot;,&quot;碧青&quot;)的(dropdown:bind $firstNpc_HairLong,&quot;短发&quot;,&quot;长发&quot;,&quot;锁骨短发&quot;,&quot;披肩长发&quot;,&quot;波浪卷发&quot;,&quot;齐耳短发&quot;,&quot;齐腰长发&quot;,&quot;及臀长发&quot;)缠绕着您的指尖。(dropdown:bind $firstNpc_BodyColor, &quot;白皙&quot;,&quot;麦色&quot;, &quot;黝黑&quot;,&quot;古铜色&quot;,&quot;苍白&quot;)的身体向您靠来，(dropdown: bind $PCSts, &quot;火红&quot;, &quot;棕褐&quot;, &quot;淡蓝&quot;,&quot;湖青&quot;,&quot;翠绿&quot;,&quot;金黄&quot;,&quot;淡紫&quot;,&quot;漆黑&quot;)色的双眼静静地看着你……
-
+&lt;br&gt;
 像这样的梦境，很难令人忘却不是吗？
-
+&lt;br&gt;
 (link:&quot;是的&quot;,(t8n:&quot;blur&quot;)+(css:&quot;width:30%; border:solid 2px; padding:0.5em 1em; border-radius: 25%;&quot;)+(hover-style:(color:$lc+white)+(bg:$c+black)+(text-style:&quot;underline&quot;)))[(go-to:&quot;导入剧情2&quot;)]
 
 (display:&quot;主角变量&quot;)(display:&quot;变量初设置&quot;)(display:&quot;时间系统初始化&quot;)(display:&quot;NPC初始化&quot;)(display:&quot;小屋变量初始化&quot;)(display:&quot;图鉴系统&quot;)(display:&quot;种植系统&quot;)]
-]]]</tw-passagedata><tw-passagedata pid="35" name="导入剧情2" tags="centerbox" position="300,425" size="100,100">&lt;div class=&quot;centerText&quot;&gt;&amp;emsp;&amp;emsp;你从昏迷中清醒过来……
+]&lt;br&gt;]]]]}</tw-passagedata><tw-passagedata pid="35" name="导入剧情2" tags="centerbox" position="300,425" size="100,100">&lt;div class=&quot;centerText&quot;&gt;&amp;emsp;&amp;emsp;你从昏迷中清醒过来……
 &amp;emsp;&amp;emsp;你发现自己在一个木制小屋里面，是谁把你送到这里来的？或许屋子里会有一点答案。
 (css:&quot;box-shadow: 1px 1px 10px #9695956b;border-radius: 15px;background:var(--hcAT);&quot;)+(box:&quot;=XXX=&quot;)[提示：点击下面的「调查」，开始搜索小屋内的线索吧！]
 (link-goto:&quot;→调查&quot;,&quot;导入剧情3&quot;)
@@ -2199,17 +2199,17 @@ document.addEventListener(&#39;DOMContentLoaded&#39;, moveSidebar);
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="130" name="饰品店" tags="" position="575,1650" size="100,50">&lt;div class=&#39;centerText&#39;&gt;(size:1)[♢(print:(passage:)&#39;s name)♢]
 店内玲琅满目的饰品让那些得罪自己伴侣的生灵，得到了一个花钱就能增加道歉成功率的机会。
 (link:&#39;离开&#39;)[(set:$Place to $lastPlace)(go-to:$Place)]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="131" name="首页" tags="" position="100,425" size="100,100">[(replace:?sidebar)[] [(align:&quot;=&gt;&lt;=&quot;)+(text-style:&quot;outline&quot;)+(font:&quot;Swei Sugar&quot;)+(css:&quot;font-size:2.25em;&quot;)+(color:$hc)[&lt;img src=&quot;https://free.picui.cn/free/2025/10/15/68ef3acbb2fd3.png&quot; style=&quot;mix-blend-mode:luminosity;width:100%;&quot;&gt;]]&lt;name|
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="131" name="首页" tags="" position="100,425" size="100,100">[(replace:?sidebar)[]&lt;br&gt;&lt;br&gt;(css:&#39;height: 80vh;display: flex;justify-content: center;align-items: stretch;flex-wrap: nowrap;align-content: stretch;flex-direction: column;&#39;)[(align:&quot;=&gt;&lt;=&quot;)+(text-style:&quot;outline&quot;)+(font:&quot;Swei Sugar&quot;)+(css:&quot;&quot;)+(color:$hc)[&lt;img src=&quot;https://free.picui.cn/free/2025/10/15/68ef3acbb2fd3.png&quot; style=&quot;mix-blend-mode:luminosity;width:100%;&quot;&gt;]&lt;name|
 (css:&#39;font-size:0.5em;&#39;)+(align:&quot;==&gt;&quot;)[版本号：v0.0.13&amp;emsp;
 游戏引擎：twine-harlowe故事格式
 制作者：爬修女]
 
-(css:&#39;display:block;margin:2em;font-size:1em&#39;)[这里是另一个世界破碎之后残留的碎片，误入他乡的旅者，欢迎你来到——“世界树之下”。&lt;br&gt;]
-(css:&quot;width:7em;margin: 0 auto;font-size:1.5em;&quot;)[(link-goto:&quot;开始游戏&lt;br&gt;&quot;,&quot;导入剧情1&quot;)]
-(if: (saved-games: ) contains &quot;SlotAuto&quot;)[(link-rerun:&quot;继续游戏&lt;br&gt;&quot;,(css:&quot;width:7em;margin: 0 auto;font-size: 20px;&quot;))[(load-game:&quot;SlotAuto&quot;)]&lt;br&gt;]\
-(css:&quot;width:7em;margin: 0 auto;font-size: 1.5em;&quot;)[(link-rerun:&quot;读取存档&lt;br&gt;&quot;)[(set:$boxName to &quot;存档界面&quot;)(show:?backbagShow)(rerun:?bag)(rerun:?boxName)]]
-(css:&quot;width:7em;margin: 0 auto;font-size: 1.5em;&quot;)[(link-rerun:&quot;更多设置&lt;br&gt;&quot;)[(set:$boxName to &quot;设置界面&quot;)(show:?backbagShow)(rerun:?bag)(rerun:?boxName)]]
-]&lt;top|
+(css:&#39;display:block;margin:2em;font-size:1em;margin:2em;&#39;)[这里是另一个世界破碎之后残留的碎片，误入他乡的旅者，欢迎你来到——“世界树之下”。&lt;br&gt;]
+(css:&#39;margin:2em;&#39;)[(css:&quot;width:7em;margin: 0 auto;font-size:2em;&quot;)[(link-goto:&quot;开始游戏&lt;br&gt;&quot;,&quot;导入剧情1&quot;)]
+(if: (saved-games: ) contains &quot;SlotAuto&quot;)[(link-rerun:&quot;继续游戏&lt;br&gt;&quot;,(css:&quot;width:7em;margin: 0 auto;font-size: 2em&quot;))[(load-game:&quot;SlotAuto&quot;)]&lt;br&gt;]\
+(css:&quot;width:7em;margin: 0 auto;font-size: 2em;&quot;)[(link-rerun:&quot;读取存档&lt;br&gt;&quot;)[(set:$boxName to &quot;存档界面&quot;)(show:?backbagShow)(rerun:?bag)(rerun:?boxName)]]
+(css:&quot;width:7em;margin: 0 auto;font-size: 2em;&quot;)[(link-rerun:&quot;更多设置&lt;br&gt;&quot;)[(set:$boxName to &quot;设置界面&quot;)(show:?backbagShow)(rerun:?bag)(rerun:?boxName)]]]
+]]&lt;top|
 {(css:&quot;display:none&quot;)[{&lt;img src=&quot;https://free.picui.cn/free/2025/10/12/68eb523da61bd.png&quot; alt=&quot;未命名的设计 (45).png&quot; title=&quot;未命名的设计 (45).png&quot; &gt;
 &lt;img src=&quot;https://free.picui.cn/free/2025/10/12/68eb506e1686b.png&quot; alt=&quot;未命名的设计 (41).png&quot; title=&quot;未命名的设计 (41).png&quot; /&gt;
 &lt;img src=&quot;https://free.picui.cn/free/2025/10/12/68eb4f92674cc.png&quot; alt=&quot;未命名的设计 (40).png&quot; title=&quot;未命名的设计 (40).png&quot; /&gt;
@@ -2418,7 +2418,7 @@ $box[获得“奇怪的帽子”。](set:_link to it+1)(set: $backpack to it +(d
              (else-if:(count:_c,&#39;晕&#39;)&gt;1)[(if:$backpack contains _b)[(set:$backpack&#39;s _b&#39;s &quot;数量&quot; to it+1)](else:)[(set:$backpack to it+(dm:_b,(dm:&quot;属性&quot;,&quot;头晕&quot;,&#39;食用&#39;,&#39;可&#39;,&quot;说明&quot;,(str:&quot;由&quot;+(str:_d)+&#39;烹饪而成。&#39;),&#39;数量&#39;,1)))锅里出现一份“_b”!]]\
              (else:)[(set:_f to (either:..._c))(set:$backpack to it+(dm:_b,(dm:&quot;属性&quot;,_f,&#39;食用&#39;,&#39;可&#39;,&quot;说明&quot;,(str:&quot;由&quot;+(str:_d)+&#39;烹饪而成。&#39;),&#39;数量&#39;,1)))锅里出现一份“_b”!]
    ]\
-    }</tw-passagedata><tw-passagedata pid="147" name="特殊状态显示" tags="" position="600,300" size="100,100">{
+    (set:$cookPot to (dm:))}</tw-passagedata><tw-passagedata pid="147" name="特殊状态显示" tags="" position="600,300" size="100,100">{
 (for:each _i,...(range:1,(dm-names:$Status)&#39;s length))[\
     (if:(dm-entries:$Status)&#39;s _i&#39;s value &gt;0 and (dm-entries:$Status)&#39;s _i&#39;s value &lt;90)[\
          (if:(split: &quot;&quot;,(dm-names:$Status)&#39;s _i)&#39;s length is 1)[\
