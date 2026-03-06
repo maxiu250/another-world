@@ -1599,7 +1599,9 @@ $box[看到小鸟，你的心情好多了！]($san_add:1)
         试图修复中毒之后吃了治愈无法治愈的bug
         增添了坩埚的煮水功能
         增添了吃过的食物，可以在说明栏中看到食用后的效果
-        增添了由纯蘑菇烹饪而成的特殊菜肴：“蘑菇盛宴”</tw-passagedata><tw-passagedata pid="56" name="日程界面" tags="" position="2275,125" size="100,100">会在这里放一些任务之类的吧</tw-passagedata><tw-passagedata pid="57" name="时间系统初始化" tags="startup" position="1400,200" size="100,100">{&lt;!--下面是时间系统的年份初始设置--&gt;
+        增添了由纯蘑菇烹饪而成的特殊菜肴：“蘑菇盛宴”
+        修复了特殊状态会重复出现的bug
+        修复了特殊状态显示不全的bug</tw-passagedata><tw-passagedata pid="56" name="日程界面" tags="" position="2275,125" size="100,100">会在这里放一些任务之类的吧</tw-passagedata><tw-passagedata pid="57" name="时间系统初始化" tags="startup" position="1400,200" size="100,100">{&lt;!--下面是时间系统的年份初始设置--&gt;
 (set:$years to 1)
 &lt;!--下面是时间系统的月份初始设置--&gt;
 (set:$month_name to (a:&quot;风&quot;,&quot;火&quot;,&quot;水&quot;,&quot;土&quot;))&lt;!--月份名字--&gt;
@@ -2299,7 +2301,7 @@ document.addEventListener(&#39;DOMContentLoaded&#39;, moveSidebar);
 店内玲琅满目的饰品让那些得罪自己伴侣的生灵，得到了一个花钱就能增加道歉成功率的机会。
 (link:&#39;离开&#39;)[(set:$Place to $lastPlace)(go-to:$Place)]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="131" name="首页" tags="" position="100,425" size="100,100">[(replace:?sidebar)[]&lt;br&gt;&lt;br&gt;(css:&#39;height: 80vh;display: flex;justify-content: center;align-items: stretch;flex-wrap: nowrap;align-content: stretch;flex-direction: column;&#39;)[(align:&quot;=&gt;&lt;=&quot;)+(text-style:&quot;outline&quot;)+(font:&quot;Swei Sugar&quot;)+(css:&quot;&quot;)+(color:$hc)[&lt;img src=&quot;https://free.picui.cn/free/2025/10/15/68ef3acbb2fd3.png&quot; style=&quot;mix-blend-mode:luminosity;width:100%;&quot;&gt;]&lt;name|
-(css:&#39;font-size:0.5em;&#39;)+(align:&quot;==&gt;&quot;)[版本号：v0.0.16&amp;emsp;
+(css:&#39;font-size:0.5em;&#39;)+(align:&quot;==&gt;&quot;)[版本号：v0.0.18&amp;emsp;
 游戏引擎：twine-harlowe故事格式
 制作者：爬修女]
 
@@ -2566,7 +2568,7 @@ $box[获得“奇怪的帽子”。](set:_link to it+1)(set: $backpack to it +(d
                 (else:)[]\
          ]\
         (else-if:(dm-names:$Status)&#39;s _i is &quot;新鲜&quot;)[]\
-        (else:)[(if:$StatusList does not contain (a:(str:&quot;•&quot;+(dm-names:$Status)&#39;s _i)))[(set:$StatusList to it +(a:(dm-names:$Status)&#39;s _i))]]\
+        (else:)[(if:$StatusList does not contain (a:(str:&quot;•&quot;+(dm-names:$Status)&#39;s _i)))[(set:$StatusList to it +(a:(str:&quot;•&quot;+(dm-names:$Status)&#39;s _i)))]]\
    ]\
 ]\
 }</tw-passagedata><tw-passagedata pid="148" name="床铺" tags="" position="1125,350" size="100,100">你现在就要睡觉了吗？
