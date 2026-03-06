@@ -1601,7 +1601,8 @@ $box[看到小鸟，你的心情好多了！]($san_add:1)
         增添了吃过的食物，可以在说明栏中看到食用后的效果
         增添了由纯蘑菇烹饪而成的特殊菜肴：“蘑菇盛宴”
         修复了特殊状态会重复出现的bug
-        修复了特殊状态显示不全的bug</tw-passagedata><tw-passagedata pid="56" name="日程界面" tags="" position="2275,125" size="100,100">会在这里放一些任务之类的吧</tw-passagedata><tw-passagedata pid="57" name="时间系统初始化" tags="startup" position="1400,200" size="100,100">{&lt;!--下面是时间系统的年份初始设置--&gt;
+        修复了特殊状态显示不全的bug
+        修复了特殊状态不会刷新的bug</tw-passagedata><tw-passagedata pid="56" name="日程界面" tags="" position="2275,125" size="100,100">会在这里放一些任务之类的吧</tw-passagedata><tw-passagedata pid="57" name="时间系统初始化" tags="startup" position="1400,200" size="100,100">{&lt;!--下面是时间系统的年份初始设置--&gt;
 (set:$years to 1)
 &lt;!--下面是时间系统的月份初始设置--&gt;
 (set:$month_name to (a:&quot;风&quot;,&quot;火&quot;,&quot;水&quot;,&quot;土&quot;))&lt;!--月份名字--&gt;
@@ -2545,7 +2546,7 @@ $box[获得“奇怪的帽子”。](set:_link to it+1)(set: $backpack to it +(d
              (else-if:(count:_c,&#39;晕&#39;)&gt;1)[(if:$backpack contains _b)[(set:$backpack&#39;s _b&#39;s &quot;数量&quot; to it+1)锅里出现一份“_b”!](else:)[(set:$backpack to it+(dm:_b,(dm:&quot;种类&quot;,&quot;餐食&quot;,&quot;属性&quot;,&quot;头晕&quot;,&#39;食用&#39;,&#39;可&#39;,&quot;说明&quot;,(str:&quot;由&quot;+(str:_d)+&#39;烹饪而成。&#39;),&#39;尝试&#39;,false,&#39;数量&#39;,1)))锅里出现一份“_b”!]]\
              (else:)[(set:_f to (either:..._c))(set:$backpack to it+(dm:_b,(dm:&quot;种类&quot;,&quot;餐食&quot;,&quot;属性&quot;,_f,&#39;食用&#39;,&#39;可&#39;,&quot;说明&quot;,(str:&quot;由&quot;+(str:_d)+&#39;烹饪而成。&#39;),&#39;尝试&#39;,false,&#39;数量&#39;,1)))锅里出现一份“_b”!]
    ]\
-    (set:$cookPot to (dm:))}</tw-passagedata><tw-passagedata pid="147" name="特殊状态显示" tags="" position="600,300" size="100,100">{
+    (set:$cookPot to (dm:))}</tw-passagedata><tw-passagedata pid="147" name="特殊状态显示" tags="" position="600,300" size="100,100">{(set:$StatusList to (a:))
 (for:each _i,...(range:1,(dm-names:$Status)&#39;s length))[\
     (if:(dm-entries:$Status)&#39;s _i&#39;s value &gt;0 and (dm-entries:$Status)&#39;s _i&#39;s value &lt;90)[\
          (if:(split: &quot;&quot;,(dm-names:$Status)&#39;s _i)&#39;s length is 1)[\
