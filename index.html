@@ -1602,7 +1602,12 @@ $box[看到小鸟，你的心情好多了！]($san_add:1)
         增添了由纯蘑菇烹饪而成的特殊菜肴：“蘑菇盛宴”
         修复了特殊状态会重复出现的bug
         修复了特殊状态显示不全的bug
-        修复了特殊状态不会刷新的bug</tw-passagedata><tw-passagedata pid="56" name="日程界面" tags="" position="2275,125" size="100,100">会在这里放一些任务之类的吧</tw-passagedata><tw-passagedata pid="57" name="时间系统初始化" tags="startup" position="1400,200" size="100,100">{&lt;!--下面是时间系统的年份初始设置--&gt;
+        修复了特殊状态不会刷新的bug
+26.3.7
+         修复了水壶无法在探险之后在水坑中装水的bug
+         
+
+        </tw-passagedata><tw-passagedata pid="56" name="日程界面" tags="" position="2275,125" size="100,100">会在这里放一些任务之类的吧</tw-passagedata><tw-passagedata pid="57" name="时间系统初始化" tags="startup" position="1400,200" size="100,100">{&lt;!--下面是时间系统的年份初始设置--&gt;
 (set:$years to 1)
 &lt;!--下面是时间系统的月份初始设置--&gt;
 (set:$month_name to (a:&quot;风&quot;,&quot;火&quot;,&quot;水&quot;,&quot;土&quot;))&lt;!--月份名字--&gt;
@@ -2364,7 +2369,7 @@ $box[获得“奇怪的帽子”。](set:_link to it+1)(set: $backpack to it +(d
 (link-rerun:&quot;→取水&quot;)[{
     (if:(dm-names:$backpack) contains &quot;水壶&quot;)[
          (replace:?text)[你拿出水壶装满水，现在暂时不用担心口渴没水喝了。]\
-         (set: $backpack&#39;s &quot;水壶&quot;&#39;s &quot;容量&quot; to 25)\
+        (set: $backpack&#39;s &quot;水壶&quot;&#39;s &quot;存量&quot; to $backpack&#39;s &quot;水壶&quot;&#39;s &quot;容量&quot;,$backpack&#39;s &quot;水壶&quot;&#39;s &quot;内容&quot; to &#39;不安全的水&#39;)\
     ]\
     (else:)[(replace:?text)[你身上并没有合适的容器可以装水。]]\
     }]
@@ -2487,8 +2492,7 @@ $box[获得“奇怪的帽子”。](set:_link to it+1)(set: $backpack to it +(d
     (link:&quot;倒入水壶中的水&quot;)[\
           (if:(dm-names:$backpack) contains &quot;水壶&quot;)[\
                 (if: $backpack&#39;s &quot;水壶&quot;&#39;s &quot;存量&quot; &gt;0)[\
-                [(line-style:via (t8n-delay:pos*1000)+(t8n:&quot;blur&quot;))[
-                ...&lt;br&gt;
+                [...&lt;br&gt;(line-style:via (t8n-delay:pos*800)+(t8n:&quot;blur&quot;))[\
                 ......&lt;br&gt;
                 你把煮完的水再次倒回水壶中，这些水看起来更纯净了。&lt;br&gt;]](set: $backpack&#39;s &quot;水壶&quot;&#39;s &quot;存量&quot; to (round:$backpack&#39;s &quot;水壶&quot;&#39;s &quot;存量&quot;*4/5),$backpack&#39;s &quot;水壶&quot;&#39;s &quot;内容&quot; to &#39;水&#39;)]\
                 (else:)[水壶中没有水了。]
