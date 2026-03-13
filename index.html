@@ -1323,12 +1323,11 @@ npc基本属性列表：
 对方(dropdown:bind $firstNpc_HairColor, &quot;赤红&quot;,&quot;淡黄&quot;,&quot;翠绿&quot;,&quot;湛蓝&quot;,&quot;淡紫&quot;,&quot;乌黑&quot;,&quot;雪白&quot;,&quot;银灰&quot;,&quot;碧青&quot;)的(dropdown:bind $firstNpc_HairLong,&quot;短发&quot;,&quot;长发&quot;,&quot;锁骨短发&quot;,&quot;披肩长发&quot;,&quot;波浪卷发&quot;,&quot;齐耳短发&quot;,&quot;齐腰长发&quot;,&quot;及臀长发&quot;)缠绕着您的指尖。(dropdown:bind $firstNpc_BodyColor, &quot;白皙&quot;,&quot;麦色&quot;, &quot;黝黑&quot;,&quot;古铜色&quot;,&quot;苍白&quot;)的身体向您靠来，(dropdown: bind $firstNpc_ts, &quot;火红&quot;, &quot;棕褐&quot;, &quot;淡蓝&quot;,&quot;湖青&quot;,&quot;翠绿&quot;,&quot;金黄&quot;,&quot;淡紫&quot;,&quot;漆黑&quot;)色的双眼静静地看着你……
 &lt;br&gt;
 像这样的梦境，很难令人忘却不是吗？\
-(set:$npcNumlist&#39;s (str-nth:_num) to (dm:&quot;属性&quot;,&quot;梦中人&quot;,&quot;名字&quot;,_npcName,&quot;性别&quot;,_npcSex,&quot;种族&quot;,_npcSpeci,&quot;性格&quot;,_npcTrait,&quot;发色&quot;,_npcHair,&quot;瞳色&quot;,_npcEye,&quot;喜欢&quot;,_npclike,&quot;讨厌&quot;,_npchate,&quot;经历&quot;,(dm:)))
 &lt;br&gt;
 (link:&quot;是的&quot;,(t8n:&quot;blur&quot;)+(css:&quot;width:30%; border:solid 2px; padding:0.5em 1em; border-radius: 25%;&quot;)+(hover-style:(color:$lc+white)+(bg:$c+black)+(text-style:&quot;underline&quot;)))[(set:_npclike to $NPC_Like&#39;s random)\
 (set:$NPC_Hate to $NPC_Hate-(a:_npclike))\
 (set:_npchate to $NPC_Hate&#39;s random)\
-(set:$dreamNpc to (dm:&quot;属性&quot;,&quot;梦中人&quot;,&quot;名字&quot;,&quot;&quot;,&quot;性别&quot;, $firstNpc_Sex,&quot;种族&quot;,&quot;未知&quot;,&quot;性格&quot;,&quot;忠犬&quot;,&quot;发色&quot;,$firstNpc_HairColor,&quot;发长&quot;,$firstNpc_HairLong,&quot;瞳色&quot;,$firstNpc_ts,&quot;肤色&quot;,$firstNpc_BodyColor,&quot;喜欢&quot;,_npclike,&quot;讨厌&quot;,_npchate,&quot;经历&quot;,(dm:)))(go-to:&quot;导入剧情2&quot;)]
+(set:$dreamNpc to (dm:&quot;属性&quot;,&quot;梦中人&quot;,&quot;名字&quot;,&quot;朱蒙&quot;,&quot;性别&quot;, $firstNpc_Sex,&quot;种族&quot;,&quot;未知&quot;,&quot;性格&quot;,&quot;忠犬&quot;,&quot;发色&quot;,$firstNpc_HairColor,&quot;发长&quot;,$firstNpc_HairLong,&quot;瞳色&quot;,$firstNpc_ts,&quot;肤色&quot;,$firstNpc_BodyColor,&quot;喜欢&quot;,_npclike,&quot;讨厌&quot;,_npchate,&quot;经历&quot;,(dm:)))(go-to:&quot;导入剧情2&quot;)]
 
 (display:&quot;主角变量&quot;)(display:&quot;变量初设置&quot;)(display:&quot;时间系统初始化&quot;)(display:&quot;NPC初始化&quot;)(display:&quot;小屋变量初始化&quot;)(display:&quot;图鉴系统&quot;)(display:&quot;种植系统&quot;)]
 ]&lt;br&gt;]]]]}</tw-passagedata><tw-passagedata pid="35" name="导入剧情2" tags="centerbox" position="300,425" size="100,100">&lt;div class=&quot;centerText&quot;&gt;&amp;emsp;&amp;emsp;你从昏迷中清醒过来……
