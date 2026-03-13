@@ -1323,7 +1323,7 @@ npc基本属性列表：
 对方(dropdown:bind $firstNpc_HairColor, &quot;赤红&quot;,&quot;淡黄&quot;,&quot;翠绿&quot;,&quot;湛蓝&quot;,&quot;淡紫&quot;,&quot;乌黑&quot;,&quot;雪白&quot;,&quot;银灰&quot;,&quot;碧青&quot;)的(dropdown:bind $firstNpc_HairLong,&quot;短发&quot;,&quot;长发&quot;,&quot;锁骨短发&quot;,&quot;披肩长发&quot;,&quot;波浪卷发&quot;,&quot;齐耳短发&quot;,&quot;齐腰长发&quot;,&quot;及臀长发&quot;)缠绕着您的指尖。(dropdown:bind $firstNpc_BodyColor, &quot;白皙&quot;,&quot;麦色&quot;, &quot;黝黑&quot;,&quot;古铜色&quot;,&quot;苍白&quot;)的身体向您靠来，(dropdown: bind $firstNpc_ts, &quot;火红&quot;, &quot;棕褐&quot;, &quot;淡蓝&quot;,&quot;湖青&quot;,&quot;翠绿&quot;,&quot;金黄&quot;,&quot;淡紫&quot;,&quot;漆黑&quot;)色的双眼静静地看着你……
 &lt;br&gt;
 像这样的梦境，很难令人忘却不是吗？\
-(set:$npcNumlist&#39;s (str-nth:_num) to (dm:&quot;属性&quot;,_i,&quot;名字&quot;,_npcName,&quot;性别&quot;,_npcSex,&quot;种族&quot;,_npcSpeci,&quot;性格&quot;,_npcTrait,&quot;发色&quot;,_npcHair,&quot;瞳色&quot;,_npcEye,&quot;喜欢&quot;,_npclike,&quot;讨厌&quot;,_npchate,&quot;经历&quot;,(dm:)))
+(set:$npcNumlist&#39;s (str-nth:_num) to (dm:&quot;属性&quot;,&quot;梦中人&quot;,&quot;名字&quot;,_npcName,&quot;性别&quot;,_npcSex,&quot;种族&quot;,_npcSpeci,&quot;性格&quot;,_npcTrait,&quot;发色&quot;,_npcHair,&quot;瞳色&quot;,_npcEye,&quot;喜欢&quot;,_npclike,&quot;讨厌&quot;,_npchate,&quot;经历&quot;,(dm:)))
 &lt;br&gt;
 (link:&quot;是的&quot;,(t8n:&quot;blur&quot;)+(css:&quot;width:30%; border:solid 2px; padding:0.5em 1em; border-radius: 25%;&quot;)+(hover-style:(color:$lc+white)+(bg:$c+black)+(text-style:&quot;underline&quot;)))[(set:_npclike to $NPC_Like&#39;s random)\
 (set:$NPC_Hate to $NPC_Hate-(a:_npclike))\
@@ -1335,7 +1335,7 @@ npc基本属性列表：
 &amp;emsp;&amp;emsp;你发现自己在一个木制小屋里面，是谁把你送到这里来的？或许屋子里会有一点答案。
 (css:&quot;box-shadow: 1px 1px 10px #9695956b;border-radius: 15px;background:var(--hcAT);&quot;)+(box:&quot;=XXX=&quot;)[提示：点击下面的「调查」，开始搜索小屋内的线索吧！（如果看不到探索，请向下滑动。）]
 (link-goto:&quot;→调查&quot;,&quot;导入剧情3&quot;)
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="36" name="小屋" tags="" position="1025,350" size="100,100">&lt;div class=&#39;centerText&#39;&gt;(size:1)[♢(print:(passage:)&#39;s name)♢&lt;br&gt;]
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="36" name="小屋" tags="" position="1300,400" size="100,100">&lt;div class=&#39;centerText&#39;&gt;(size:1)[♢(print:(passage:)&#39;s name)♢&lt;br&gt;]
 &amp;emsp;&amp;emsp;小屋里放着一些木质的家具，但让人感觉并不舒适。\
 (if:$firstNpc_where is &quot;潮汐礁岛&quot;)[小屋外传来一声声海浪声。]\
 (else-if:$firstNpc_where is &quot;树荫密林&quot;)[小屋里充斥着清新的泥土味。]\
@@ -1440,7 +1440,8 @@ npc基本属性列表：
             (either:&quot;在你探险周围环境的时候，眼角的余光中似乎看见一个身影。可当你转头看去的时候却消失了。&quot;,&quot;有什么东西在黑暗之中窥视着你，你听到了祂的脚步声。&quot;,&quot;昏暗的角落里突然出现一些光球，向你飘了过来，直到你触碰到它们才像泡沫一般破碎消失。&quot;,&quot;你总有一种被人盯着的感觉，似乎有谁在角落里偷偷地看着你。&quot;)
         ]
         &lt;br&gt;$box[这一切是真实还是幻影？]
-    ]]
+    ]
+    (else:)[如果看到这个代码，请截图给爬修女，需要重写第二层逻辑。]]
 }
 (link-rerun:&quot;→返回&quot;)[(go-to:$Place)]
 &lt;/div&gt;
@@ -1645,7 +1646,11 @@ $box[看到小鸟，你的心情好多了！]($san_add:1)
          修正了探险的突发事件空白bug
          改写了烹饪数量的判断逻辑，采用两种变量判断避免因一个变量错误导致出现的bug。
          
-</tw-passagedata><tw-passagedata pid="56" name="日程界面" tags="" position="2275,125" size="100,100">会在这里放一些任务之类的吧</tw-passagedata><tw-passagedata pid="57" name="时间系统初始化" tags="startup" position="1400,200" size="100,100">{&lt;!--下面是时间系统的年份初始设置--&gt;
+3.12
+         修复捏人界面的bug
+         修复了成就列表无法加载的bug，内容还没写就是了
+         重写了救援事件的数值恢复逻辑
+         试图修复探险突发事件的空白bug</tw-passagedata><tw-passagedata pid="56" name="日程界面" tags="" position="2275,125" size="100,100">会在这里放一些任务之类的吧</tw-passagedata><tw-passagedata pid="57" name="时间系统初始化" tags="startup" position="1400,200" size="100,100">{&lt;!--下面是时间系统的年份初始设置--&gt;
 (set:$years to 1)
 &lt;!--下面是时间系统的月份初始设置--&gt;
 (set:$month_name to (a:&quot;风&quot;,&quot;火&quot;,&quot;水&quot;,&quot;土&quot;))&lt;!--月份名字--&gt;
@@ -2614,7 +2619,7 @@ $box[获得“奇怪的帽子”。](set:_link to it+1)(set: $backpack to it +(d
         (else:)[(if:$StatusList does not contain (a:(str:&quot;•&quot;+(dm-names:$Status)&#39;s _i)))[(set:$StatusList to it +(a:(str:&quot;•&quot;+(dm-names:$Status)&#39;s _i)))]]\
    ]\
 ]\
-}</tw-passagedata><tw-passagedata pid="148" name="床铺" tags="" position="1125,350" size="100,100">你现在就要睡觉了吗？
+}</tw-passagedata><tw-passagedata pid="148" name="床铺" tags="" position="1400,400" size="100,100">你现在就要睡觉了吗？
 
 (link-rerun:&quot;休息&quot;,(css:&quot;display: inline;padding: 1em;margin: 1em 0;&quot;))[(hide:?backbagShow)(show:?blackScreen)(rerun:?blackScreen)($minute:60)($pow_add:12)]
 (link-rerun:&quot;睡间觉&quot; ,(css:&quot;display: inline;padding: 1em;margin: 1em 0;&quot;))[(hide:?backbagShow)(show:?blackScreen)(rerun:?blackScreen)($minute:180)($pow_add:40)]
@@ -2637,7 +2642,6 @@ $box[获得“奇怪的帽子”。](set:_link to it+1)(set: $backpack to it +(d
 (if:$food &lt;1 )[
       (set:$dreamNpc_meet to it +1)
       (show:?blackScreen)(rerun:?blackScreen)
-      (set:$food to 60)
       (set:$Place to &quot;小屋&quot;)
       (line-style:via (t8n-delay:pos*1000)+(t8n:&quot;blur&quot;)+(t8n-time:1s))[
            你饥饿过度，昏倒过去。&lt;br&gt;
@@ -2650,13 +2654,12 @@ $box[获得“奇怪的帽子”。](set:_link to it+1)(set: $backpack to it +(d
            ……&lt;br&gt;
            …………&lt;br&gt;
            在你彻底清醒之前，有人从你身边离开了。&lt;br&gt;
-           (link:&quot;→醒来&quot;)[(go-to:$Place)]
+           (link:&quot;→醒来&quot;)[(set:$food to 60)(go-to:$Place)]
       ]
 ]
 (else-if:$pow &lt;1)[
       (set:$dreamNpc_meet to it +1)
       (show:?blackScreen)(rerun:?blackScreen)
-      (set:$pow to 60)
       (set:$Place to &quot;小屋&quot;)
       (line-style:via (t8n-delay:pos*1000)+(t8n:&quot;blur&quot;)+(t8n-time:1s))[
            你疲惫过度，昏倒过去。&lt;br&gt;
@@ -2668,12 +2671,11 @@ $box[获得“奇怪的帽子”。](set:_link to it+1)(set: $backpack to it +(d
            ……&lt;br&gt;
            …………&lt;br&gt;
            在你彻底清醒之前，有人从你身边离开了。&lt;br&gt;
-           (link:&quot;→醒来&quot;)[(go-to:$Place)]
+           (link:&quot;→醒来&quot;)[(set:$pow to 60)(go-to:$Place)]
       ]
 ]
 (else-if:$water &lt;1)[
       (set:$dreamNpc_meet to it +1)
-      (set:$water to 30)
       (set:$Place to &quot;小屋&quot;)
       (line-style:via (t8n-delay:pos*1000)+(t8n:&quot;blur&quot;)+(t8n-time:1s))[
            你口渴难耐，瘫倒在地上&lt;br&gt;
@@ -2686,7 +2688,7 @@ $box[获得“奇怪的帽子”。](set:_link to it+1)(set: $backpack to it +(d
            ……&lt;br&gt;
            …………&lt;br&gt;
            在你彻底清醒之前，人影从你身边离开了。&lt;br&gt;
-           (link:&quot;→醒来&quot;)[(go-to:$Place)]
+           (link:&quot;→醒来&quot;)[(set:$water to 30)(go-to:$Place)]
       ]
 ]
 (else-if:$san &lt; 10)[
@@ -2748,7 +2750,7 @@ $box[获得“奇怪的帽子”。](set:_link to it+1)(set: $backpack to it +(d
 (link:&quot;确认&quot;)[(set:$savedName&#39;s $savingName to $Slot)更改成功!(rerun:?savingSystem)]
 &lt;/div&gt;]</tw-passagedata><tw-passagedata pid="155" name="NPC-攻略剧情事件" tags="" position="2100,650" size="100,100">{
 (
-}</tw-passagedata></tw-storydata>
+}</tw-passagedata><tw-passagedata pid="156" name="成就列表" tags="" position="1000,300" size="100,100">你在这里寻找什么？其实这个还没写</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
