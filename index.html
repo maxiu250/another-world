@@ -1426,7 +1426,7 @@ npc基本属性列表：
 (if:$dreamNPCEvents&#39;s 1st is true and (random:5) is 1)[
 这里应该有新的东西，但是还没写。
 ]
-(else:)[    (if:$firstNpc_where is $Place and $firstNpc_know is false)[
+(else:)[
         (if:$Place is &quot;潮汐礁岛&quot;)[
             (either:&quot;在你探险周围环境的时候，眼角的余光中似乎看见一个身影。可当你转头看去的时候却消失了。&quot;,&quot;海面上飘来了一阵悠长的低吟声，似乎是鲸鱼的声音，可仔细听却听到了呢喃一般的歌声。&quot;,&quot;你听到海面传来一阵水花飞溅的声音，等你转过头去看，只看到一条带着绚丽色彩的鱼尾。&quot;,&quot;你总有一种被人盯着的感觉，似乎有谁在角落里偷偷地看着你。&quot;)
         ]
@@ -1441,10 +1441,12 @@ npc基本属性列表：
         ]
         &lt;br&gt;$box[这一切是真实还是幻影？]
     ]
-    (else:)[如果看到这个代码，请截图给爬修女，需要重写第二层逻辑。]]
+
 }
 (link-rerun:&quot;→返回&quot;)[(go-to:$Place)]
 &lt;/div&gt;
+{&lt;!--
+   (if:$firstNpc_where is $Place and $firstNpc_know is false)[]--&gt;}
 </tw-passagedata><tw-passagedata pid="46" name="探险-新地点" tags="" position="450,950" size="100,100">&lt;div class=&#39;centerText&#39;&gt;{(size:1)[▶▷▶ 发现新地点 ]&lt;br&gt;
 你找到了一条通往一个新的地方的偏僻小路。
 &lt;br&gt;&lt;br&gt;
@@ -1650,7 +1652,8 @@ $box[看到小鸟，你的心情好多了！]($san_add:1)
          修复捏人界面的bug
          修复了成就列表无法加载的bug，内容还没写就是了
          重写了救援事件的数值恢复逻辑
-         试图修复探险突发事件的空白bug</tw-passagedata><tw-passagedata pid="56" name="日程界面" tags="" position="2275,125" size="100,100">会在这里放一些任务之类的吧</tw-passagedata><tw-passagedata pid="57" name="时间系统初始化" tags="startup" position="1400,200" size="100,100">{&lt;!--下面是时间系统的年份初始设置--&gt;
+         试图修复探险突发事件的空白bug
+         删除了新增的突发事件判断，应该在加入更多的npc之后再添加</tw-passagedata><tw-passagedata pid="56" name="日程界面" tags="" position="2275,125" size="100,100">会在这里放一些任务之类的吧</tw-passagedata><tw-passagedata pid="57" name="时间系统初始化" tags="startup" position="1400,200" size="100,100">{&lt;!--下面是时间系统的年份初始设置--&gt;
 (set:$years to 1)
 &lt;!--下面是时间系统的月份初始设置--&gt;
 (set:$month_name to (a:&quot;风&quot;,&quot;火&quot;,&quot;水&quot;,&quot;土&quot;))&lt;!--月份名字--&gt;
@@ -2502,11 +2505,11 @@ $box[获得“奇怪的帽子”。](set:_link to it+1)(set: $backpack to it +(d
 &lt;!--特殊状态结算 END--&gt;
 
 &lt;!--属性数值归零结算--&gt;
-(if:$pow &lt;1 )[(go-to:&quot;NPC-梦中人-救援事件&quot;)]
-(else-if:$food&lt;1 )[(go-to:&quot;NPC-梦中人-救援事件&quot;)]
-(else-if:$water&lt;1 )[(go-to:&quot;NPC-梦中人-救援事件&quot;)]
-(else-if:$health&lt;1 )[(go-to:&quot;NPC-梦中人-救援事件&quot;)]
-(else-if:$san&lt;1 )[(go-to:&quot;NPC-梦中人-救援事件&quot;)]
+(if:$pow &lt;1 and $NPCEventTrue is false)[(set:$NPCEventTrue to true)(go-to:&quot;NPC-梦中人-救援事件&quot;)]
+(else-if:$food&lt;1 and $NPCEventTrue is false)[(set:$NPCEventTrue to true)(go-to:&quot;NPC-梦中人-救援事件&quot;)]
+(else-if:$water&lt;1 and $NPCEventTrue is false)[(set:$NPCEventTrue to true)(go-to:&quot;NPC-梦中人-救援事件&quot;)]
+(else-if:$health&lt;1 and $NPCEventTrue is false)[(set:$NPCEventTrue to true)(go-to:&quot;NPC-梦中人-救援事件&quot;)]
+(else-if:$san&lt;1 and $NPCEventTrue is false)[(set:$NPCEventTrue to true)(go-to:&quot;NPC-梦中人-救援事件&quot;)]
 (else:)[]
 &lt;!--属性数值归零结算 END--&gt;
 
@@ -2654,7 +2657,7 @@ $box[获得“奇怪的帽子”。](set:_link to it+1)(set: $backpack to it +(d
            ……&lt;br&gt;
            …………&lt;br&gt;
            在你彻底清醒之前，有人从你身边离开了。&lt;br&gt;
-           (link:&quot;→醒来&quot;)[(set:$food to 60)(go-to:$Place)]
+           (link:&quot;→醒来&quot;)[(set:$NPCEventTrue to false)(set:$food to 60)(go-to:$Place)]
       ]
 ]
 (else-if:$pow &lt;1)[
@@ -2671,7 +2674,7 @@ $box[获得“奇怪的帽子”。](set:_link to it+1)(set: $backpack to it +(d
            ……&lt;br&gt;
            …………&lt;br&gt;
            在你彻底清醒之前，有人从你身边离开了。&lt;br&gt;
-           (link:&quot;→醒来&quot;)[(set:$pow to 60)(go-to:$Place)]
+           (link:&quot;→醒来&quot;)[(set:$NPCEventTrue to false)(set:$pow to 60)(go-to:$Place)]
       ]
 ]
 (else-if:$water &lt;1)[
@@ -2688,7 +2691,7 @@ $box[获得“奇怪的帽子”。](set:_link to it+1)(set: $backpack to it +(d
            ……&lt;br&gt;
            …………&lt;br&gt;
            在你彻底清醒之前，人影从你身边离开了。&lt;br&gt;
-           (link:&quot;→醒来&quot;)[(set:$water to 30)(go-to:$Place)]
+           (link:&quot;→醒来&quot;)[(set:$NPCEventTrue to false)(set:$water to 30)(go-to:$Place)]
       ]
 ]
 (else-if:$san &lt; 10)[
@@ -2710,6 +2713,7 @@ $box[获得“奇怪的帽子”。](set:_link to it+1)(set: $backpack to it +(d
                     (link:&quot;→捡起木雕&quot;)[
                             (set: $backpack to it +(dm:&quot;奇怪生物木雕&quot;,(dm:&#39;种类&#39;,&#39;纪念品&#39;,&quot;获得&quot;,&quot;赠予&quot;,&quot;售卖&quot;,&quot;不可&quot;,&quot;数量&quot;,1,&quot;说明&quot;,&quot;一个奇怪的家伙给你留下的小礼物。看起来好像是某种奇幻生物，除了上面的笑脸，其他信息由于制作者技术问题根本看不出来。&quot;)))
                             ($san_add:10)
+                            (set:$NPCEventTrue to false)
                            (go-to:$Place)
                      ]
                ]
@@ -2727,6 +2731,7 @@ $box[获得“奇怪的帽子”。](set:_link to it+1)(set: $backpack to it +(d
                   (link:&quot;→捡起木雕&quot;)[
                           (set: $backpack to it +(dm:&quot;奇怪生物木雕&quot;,(dm:&#39;种类&#39;,&#39;纪念品&#39;,&quot;获得&quot;,&quot;赠予&quot;,&quot;售卖&quot;,&quot;不可&quot;,&quot;数量&quot;,1,&quot;说明&quot;,&quot;一个奇怪的家伙给你留下的小礼物。看起来好像是某种奇幻生物，除了上面的笑脸，其他信息由于制作者技术问题根本看不出来。&quot;)))
                           ($san_add:10)
+                          (set:$NPCEventTrue to false)
                          (go-to:$Place)
                     ]
               ]
@@ -2739,7 +2744,7 @@ $box[获得“奇怪的帽子”。](set:_link to it+1)(set: $backpack to it +(d
                     也许那个神秘人要保护你？&lt;br&gt;
                     这种想法对你现在而言，除了浪费精力没什么用。&lt;br&gt;
                     说不定，很快你就会死在这里某一处地方。&lt;br&gt;&lt;br&gt;
-                    (link:&quot;→离开&quot;)[(go-to:&quot;$Place&quot;)]
+                    (link:&quot;→离开&quot;)[($san_add:5)(set:$NPCEventTrue to false)(go-to:&quot;$Place&quot;)]
              ]
 		]
 ]
