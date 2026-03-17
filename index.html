@@ -1123,7 +1123,7 @@ npc基本属性列表：
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="14" name="决裁处" tags="" position="1325,1575" size="100,50">&lt;div class=&#39;centerText&#39;&gt;(size:1)[♢(print:(passage:)&#39;s name)♢]
 在正对门口的墙壁上镶嵌着一个俯视众生的白鳞巨龙头，像是在审视所有人。
 (link:&#39;离开&#39;)[(set:$Place to $lastPlace)(go-to:$Place)]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="制作界面" tags="" position="575,725" size="100,100">(dialog:[11])</tw-passagedata><tw-passagedata pid="16" name="功能目录" tags="笔记" position="500,50" size="100,100">1.存读档√
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="制作界面" tags="" position="575,625" size="100,100">(dialog:[11])</tw-passagedata><tw-passagedata pid="16" name="功能目录" tags="笔记" position="500,50" size="100,100">1.存读档√
 2.生存
 3.种植
 4.钓鱼
@@ -1480,7 +1480,7 @@ npc基本属性列表：
 (either:&quot;一群不知名的鸟儿在不远处鸣叫着，无忧无虑地跳来跳去。&quot;,&quot;一直小鸟飞到你的附近歪着头看着你，又在你的下一个动作前飞走了。&quot;,&quot;你听到远处的鸟儿交杂在一起的鸣叫声，仿佛在争论着什么。&quot;,&quot;几只小鸟在你的头上盘旋着，很快又觉得无聊飞走了。&quot;,&quot;你看见地上有三四只迈着小短腿走来走去的小鸟，在你即将靠近的时候又飞走了。&quot;)
 $box[看到小鸟，你的心情好多了！]($san_add:1)
 (link-rerun:&quot;→返回&quot;)[(go-to:$Place)]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="49" name="探险事件" tags="" position="450,725" size="100,100">&lt;div class=&quot;centerText&quot;&gt;{($water_add:-3)($pow_add:-3)($minute:12)
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="49" name="探险事件" tags="" position="450,625" size="100,100">&lt;div class=&quot;centerText&quot;&gt;{($water_add:-3)($pow_add:-3)($minute:12)
 (rerun:?top)(set:_random to (random:10))
 (if:$ProbeWhere is 5)[(if:$nameVar&#39;s $Place&#39;s &quot;水源&quot; is 1)[(go-to: &quot;探险-水源&quot;)](else:)[(go-to: &quot;探险-素材获取&quot;)]]
 (else-if:_random &lt; 6)[(go-to: &quot;探险-素材获取&quot;)]
@@ -1508,8 +1508,19 @@ $box[看到小鸟，你的心情好多了！]($san_add:1)
 (input: bind $Slot, &quot;XXX=&quot;,&quot;更改名称&quot;)(link:&quot;确认&quot;)[ 
 (if:(save-game:$savingName,$Slot))[(set:$savedName to it +(dm:$savingName,$Slot))保存成功!(rerun:?savingSystem)]
 (else: )[保存失败!]]</tw-passagedata><tw-passagedata pid="52" name="旅店" tags="" position="575,1500" size="100,50">&lt;div class=&#39;centerText&#39;&gt;(size:1)[♢(print:(passage:)&#39;s name)♢]
-旅馆内各种生物来来往往，唯一常驻的除了住户，也就只有在角落里时不时发出欢呼，热爱打牌的生灵们。
-(link:&#39;离开&#39;)[(set:$Place to $lastPlace)(go-to:$Place)]
+(if:visits is 1)[你推开厚重的大门，看见温暖的壁炉中燃烧着。角落的大桌旁围着一群生灵，他们在你进来时发出震耳欲聋的欢呼，但没有一个将注意力放在你这个外来者身上。
+[旅店老板头上长长的棕色兔耳垂在两侧，他的眼神直勾勾地盯着你。]&lt;mirror|
+[(link:&quot;回房间&quot;)[(go-to:&quot;旅店房间&quot;)]](3|
+(link:&quot;搭话&quot;)[(replace:?mirror)[旅店老板眯着眼睛看向你，似乎在脑内搜寻着记忆：“你是从其他地区来的？”随后抬起手指向角落的桌子，“要赌去那边，赌局不归我管。要住店得提前付款，1天10个晶币，不包吃喝。”]
+[(link:&quot;靠近赌桌&quot;)[(replace:?mirror)[开设赌局的是一个长着犬耳的魁梧大汉，看见你靠近，他扯着沙哑的喉咙大声说道：“新来的！来一局赌大小吗？”](hide:?1)(link:&quot;参与赌局&quot;)[(go-to:&quot;赌大小&quot;)]
+(link:&quot;离开赌桌&quot;)[(replace:?mirror)[旅店老板头上长长的棕色兔耳垂在两侧，他的眼神直勾勾地盯着你。](show:?1)(hide:?2)]]]&lt;2|
+[(link:&quot;租借房间&quot;)[(if:$money &gt;=10)[(set:$money to it - 10)(show:?3)(replace:?mirror)[旅店老板一把收起你放在柜台上的晶币，接着在背后的房间板上，取下一把带着“04”标签的钥匙丢给了你。]](else:)[(replace:?mirror)[旅馆老板挑着眉毛看着你，“你是在开玩笑吗？10个晶币恕不议价。”]]]]&lt;1|
+(link:&#39;离开旅店&#39;)[(set:$Place to $lastPlace)(go-to:$Place)]]]\
+(else:)[旅馆内各种生物来来往往，唯一常驻的除了住户，也就只有在角落里时不时发出欢呼，热爱打牌的生灵们。
+酒馆老板正趴在柜台上睡觉，耳朵贴着桌面。
+(link:&quot;参与赌局&quot;)[(go-to:&quot;赌大小&quot;)]
+(link:&quot;租借房间&quot;)[(if:$money &gt;=10)[(set:$money to it - 10)(show:?3)(replace:?mirror)[旅店老板一把收起你放在柜台上的晶币，接着在背后的房间板上，取下一把带着“04”标签的钥匙丢给了你。]](else:)[(replace:?mirror)[旅馆老板挑着眉毛看着你，“你是在开玩笑吗？10个晶币恕不议价。”]]]
+(link:&#39;离开&#39;)[(set:$Place to $lastPlace)(go-to:$Place)]]
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="53" name="无尽之原" tags="" position="1700,1075" size="100,100">&lt;div class=&quot;centerText&quot;&gt;看不到边际的草原上，无数的花儿一直盛开着，或许是因为没什么人看到在花丛中凋落的花，因而才造成这种错觉。
 []&lt;eventsBox|
 {
@@ -2744,7 +2755,7 @@ $box[获得“奇怪的帽子”。](set:_link to it+1)(set: $backpack to it +(d
 &lt;!--时间快捷宏--&gt;
 (set:$minute to (macro:...any-type _minute,[(output:)[(set:$minute_num to it +_minute&#39;s 1st)(rerun:?timeRefresh,?top)]]) )
 (set:$day to (macro:...any-type _day,[(output:)[(set:$day_num to it +_day&#39;s 1st)(set:$week_num to it +_day&#39;s 1st)(rerun:?timeRefresh,?top)]]) )
-&lt;!--时间快捷宏--&gt;}</tw-passagedata></tw-storydata>
+&lt;!--时间快捷宏--&gt;}</tw-passagedata><tw-passagedata pid="158" name="旅店房间" tags="" position="925,1875" size="100,100"></tw-passagedata><tw-passagedata pid="159" name="赌大小" tags="" position="800,1875" size="100,100"></tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
